@@ -1,15 +1,10 @@
 import 'dart:async';
-import 'dart:ui';
 
-import 'package:device_frame/device_frame.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../device_preview.dart';
-import '../storage/storage.dart';
-import 'custom_device.dart';
-import 'state.dart';
 import '../../device_preview.dart' as device_preview;
+import '../../device_preview.dart';
+import 'custom_device.dart';
 
 /// The store is a container for the current [state] of the device preview.
 ///
@@ -81,7 +76,7 @@ class DevicePreviewStore extends ChangeNotifier {
 
         final defaultLocale = device_preview
             .basicLocaleListResolution(
-              WidgetsBinding.instance.window.locales,
+              WidgetsBinding.instance.platformDispatcher.locales,
               availaiableLocales.map((x) => x!.locale).toList(),
             )
             .toString();

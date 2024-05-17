@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui' as ui;
 
 import 'package:device_frame/device_frame.dart';
 import 'package:device_preview/src/state/state.dart';
@@ -14,10 +15,8 @@ import 'package:device_preview/src/views/tool_panel/sections/system.dart';
 import 'package:device_preview/src/views/tool_panel/tool_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'dart:ui' as ui;
 
 import 'locales/default_locales.dart';
 import 'utilities/screenshot.dart';
@@ -116,7 +115,7 @@ class DevicePreview extends StatefulWidget {
   ];
 
   @override
-  _DevicePreviewState createState() => _DevicePreviewState();
+  State<DevicePreview> createState() => _DevicePreviewState();
 
   /// The currently selected device.
   static DeviceInfo selectedDevice(BuildContext context) {
@@ -214,7 +213,7 @@ class DevicePreview extends StatefulWidget {
           countryCode: countryCode,
         );
       },
-      orElse: () => WidgetsBinding.instance.window.locale,
+      orElse: () => WidgetsBinding.instance.platformDispatcher.locale,
     );
   }
 
@@ -338,8 +337,8 @@ class DevicePreview extends StatefulWidget {
 
     return mediaQuery.copyWith(
       platformBrightness: isDarkMode ? Brightness.dark : Brightness.light,
-      textScaleFactor: textScaleFactor,
       boldText: boldText,
+      textScaler: TextScaler.linear(textScaleFactor),
       disableAnimations: disableAnimations,
       accessibleNavigation: accessibleNavigation,
       invertColors: invertColors,

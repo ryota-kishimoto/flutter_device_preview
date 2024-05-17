@@ -1,9 +1,9 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../utilities/json_converters.dart';
-import 'package:flutter/foundation.dart';
 
 part 'state.freezed.dart';
 part 'state.g.dart';
@@ -80,7 +80,7 @@ class DevicePreviewData with _$DevicePreviewData {
 
     /// Indicate whether image colors are inverted.
     @Default(<String, Map<String, dynamic>>{})
-        Map<String, Map<String, dynamic>> pluginData,
+    Map<String, Map<String, dynamic>> pluginData,
 
     /// The current text scaling factor.
     @Default(1.0) double textScaleFactor,
@@ -114,7 +114,7 @@ class CustomDeviceInfoData with _$CustomDeviceInfoData {
     /// The safe areas when the device is in landscape orientation.
     @Default(null)
     @NullableEdgeInsetsJsonConverter()
-        EdgeInsets? rotatedSafeAreas,
+    EdgeInsets? rotatedSafeAreas,
 
     /// The safe areas when the device is in portrait orientation.
     @EdgeInsetsJsonConverter() required EdgeInsets safeAreas,
@@ -137,15 +137,15 @@ abstract class DevicePreviewSettingsData with _$DevicePreviewSettingsData {
   const factory DevicePreviewSettingsData({
     /// The toolbar position.
     @Default(DevicePreviewToolBarPositionData.bottom)
-        DevicePreviewToolBarPositionData toolbarPosition,
+    DevicePreviewToolBarPositionData toolbarPosition,
 
     /// The theme of the toolbar.
     @Default(DevicePreviewToolBarThemeData.dark)
-        DevicePreviewToolBarThemeData toolbarTheme,
+    DevicePreviewToolBarThemeData toolbarTheme,
 
     /// The theme of the background.
     @Default(DevicePreviewBackgroundThemeData.light)
-        DevicePreviewBackgroundThemeData backgroundTheme,
+    DevicePreviewBackgroundThemeData backgroundTheme,
   }) = _DevicePreviewSettingsData;
 
   factory DevicePreviewSettingsData.fromJson(Map<String, dynamic> json) =>

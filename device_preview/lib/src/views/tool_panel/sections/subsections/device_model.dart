@@ -1,10 +1,9 @@
+import 'package:collection/collection.dart';
 import 'package:device_frame/device_frame.dart';
 import 'package:device_preview/src/state/store.dart';
 import 'package:device_preview/src/views/tool_panel/widgets/device_type_icon.dart';
 import 'package:device_preview/src/views/tool_panel/widgets/target_platform_icon.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:collection/collection.dart';
 import 'package:provider/provider.dart';
 
 import '../section.dart';
@@ -68,13 +67,13 @@ class _DeviceModelPickerState extends State<DeviceModelPicker>
             ..._allPlatforms.map(
               (e) => Tab(
                 icon: TargetPlatformIcon(platform: e),
-                text: describeEnum(e),
+                text: e.name,
               ),
             ),
             const Tab(
               icon: Icon(Icons.tune),
               text: 'Custom',
-            )
+            ),
           ],
         ),
       ),
@@ -172,7 +171,7 @@ class _TypeSectionHeader extends StatelessWidget {
           }
         }()
             .toUpperCase(),
-        style: theme.textTheme.subtitle2?.copyWith(
+        style: theme.textTheme.titleSmall?.copyWith(
           color: theme.hintColor,
         ),
       ),

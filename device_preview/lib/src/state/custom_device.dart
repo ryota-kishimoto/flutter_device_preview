@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-
-import 'state.dart';
 
 /// A device info that can be customized at runtime to update
 /// its current preview.
@@ -84,7 +80,7 @@ class CustomDeviceIdentifier implements DeviceIdentifier {
   DeviceType get type => data.type;
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other is DeviceIdentifier &&
             other.name == name &&
